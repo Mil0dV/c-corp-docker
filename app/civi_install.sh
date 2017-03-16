@@ -25,6 +25,13 @@ drush -y site-install minimal \
   --site-name=${SITE_NAME} \
   --site-mail=${SITE_MAIL}
 
+echo "Installing Backup module..."
+
+drush pm-enable --yes backup_migrate
+wget https://github.com/tpyo/amazon-s3-php-class/tarball/master
+tar -xzf master
+cp *amazon*/S3.php /var/www/c-corp/sites/all/modules/backup_migrate/includes
+
 # Harden Drupal file/folder permissions
 chown -R root:www-data ${WEB_ROOT}
 # Based on https://www.drupal.org/node/244924

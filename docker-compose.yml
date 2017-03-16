@@ -22,14 +22,28 @@ services:
       - db-data:/var/lib/mysql
   web:
     build: web
+    depends_on:
+      - letsencrypt
     env_file:
       - env/web.env
     ports:
-      - '80:80'
+      - '8080:80'
       - '443:443'
     restart: always
     volumes_from:
       - app
+  letsencrypt:
+    image: quay.io/letsencrypt/letsencrypt:latest
+    command:  bash -c "sleep 6 && certbot certonly --standalone -d c-corp.tk --text --agree-tos --email ops@c-corp.tk --server https://acme-v01.api.letsencrypt.org/directory --rsa-key-size 4096 --verbose --renew-by-default --standalone-supported-challenges http-01"
+    entrypoint: ""
+    volumes:
+      - /etc/letsencrypt
+      - /var/lib/letsencrypt
+    ports:
+      - "80"
+      - "443"
+    environment:
+      - TERM=xterm
 
 volumes:
   app-data:
