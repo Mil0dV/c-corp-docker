@@ -1,5 +1,5 @@
 # CiviCRM + Docker
-This application was built for [Snowdrift.coop](https://snowdrift.coop/), it is heavily based on previous work by [djcf](https://github.com/djcf/civicrm-docker). However, it differs from djcf's version in that it focuses on [Drupal](https://www.drupal.org/) and uses [Drush](http://www.drush.org/) instead of [civicrm-buildkit](https://github.com/civicrm/civicrm-buildkit) for installation and configuration.
+This application was built for C-corp, it is heavily based on previous work by [altsalt](https://github.com/altsalt/civicrm-docker). It focuses on [Drupal](https://www.drupal.org/) and uses [Drush](http://www.drush.org/) for installation and configuration.
 
 The current implementation keeps with the Docker design principles of being:
 
@@ -48,6 +48,7 @@ $ mysql_secure_installation
 Enjoy!
 
 # Acknowledgements
+* https://github.com/altsalt/civicrm-docker
 * Docker for providing official packages for [Drupal](https://hub.docker.com/_/drupal/), [MariaDB](https://hub.docker.com/_/mariadb/), [nginx](https://hub.docker.com/_/nginx/), and all others that went to building these.
 * djcf for their [civicrm-docker](https://github.com/djcf/civicrm-docker) project and related questions floating around the Internet.
 * Josh Lockhart for their [blog post](http://www.newmediacampaigns.com/blog/docker-for-php-developers) which maps a three container Docker image.
